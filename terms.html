@@ -6,66 +6,87 @@
 <title>Terms of Service · Listly</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,600;1,6..72,500&family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="icon" href="assets/icon.png">
 <style>
   :root{
-    --clay:#D9744B; --clay-deep:#B85C38; --parchment:#EFE2D0; --ivory:#FBF5EC; --ivory-2:#FDF9F2;
-    --ink:#2E251D; --ink-soft:#5E5043; --taupe:#94816C; --navy:#38434F;
-    --serif:"Cormorant Garamond",Georgia,serif; --sans:"DM Sans",system-ui,sans-serif;
+    --bg:#ECE8E1; --bg-2:#E3DDD3; --surface:#FAF8F3;
+    --ink:#191512; --ink-soft:#6A6157; --ink-faint:#938A7E;
+    --line:rgba(25,21,18,.12);
+    --ember:#E0701C; --ember-deep:#B5500F; --ember-soft:#F2A85E; --oxblood:#5E1A1D;
+    --night:#0B0807; --night-2:#16100C; --on-night:#F4ECE2; --on-night-soft:rgba(244,236,226,.6);
+    --serif:"Newsreader",Georgia,serif; --sans:"IBM Plex Sans",system-ui,-apple-system,sans-serif; --mono:"JetBrains Mono",ui-monospace,monospace;
   }
   *{ box-sizing:border-box; margin:0; padding:0; }
-  body{ font-family:var(--sans); color:var(--ink); background:var(--ivory); line-height:1.7; -webkit-font-smoothing:antialiased; }
-  a{ color:var(--clay-deep); text-decoration:none; }
+  body{ font-family:var(--sans); color:var(--ink); background:var(--bg); line-height:1.75; -webkit-font-smoothing:antialiased; }
+  ::selection{ background:var(--ember); color:#fff; }
+  a{ color:var(--ember-deep); text-decoration:none; }
   a:hover{ text-decoration:underline; }
   .topbar{ position:sticky; top:0; z-index:10; display:flex; align-items:center; justify-content:space-between;
-    padding:18px clamp(20px,5vw,56px); background:color-mix(in srgb,var(--ivory) 88%,transparent); backdrop-filter:blur(12px); border-bottom:1px solid rgba(76,46,28,.08); }
-  .brand{ display:flex; align-items:center; gap:11px; }
-  .brand img{ width:32px; height:32px; border-radius:8px; }
-  .brand .name{ font-family:var(--serif); font-weight:600; font-size:22px; }
-  .back{ font-size:14px; color:var(--ink-soft); }
-  .hero{ background:radial-gradient(120% 90% at 50% -30%, var(--parchment), var(--ivory) 70%); padding:clamp(70px,11vw,130px) 0 clamp(40px,6vw,70px); text-align:center; }
-  .wrap{ width:min(760px,90vw); margin-inline:auto; }
-  h1{ font-family:var(--serif); font-weight:500; font-size:clamp(40px,6vw,68px); line-height:1.05; letter-spacing:-.01em; }
-  .updated{ margin-top:16px; font-size:14px; letter-spacing:.04em; color:var(--taupe); text-transform:uppercase; }
-  .intro{ font-size:19px; color:var(--ink-soft); max-width:60ch; margin:22px auto 0; }
+    padding:15px clamp(20px,5vw,56px); background:color-mix(in srgb,var(--bg) 84%,transparent); backdrop-filter:blur(14px) saturate(1.4); border-bottom:1px solid var(--line); }
+  .brand{ display:flex; align-items:center; gap:10px; }
+  .brand .mark{ width:26px; height:26px; border-radius:8px; position:relative;
+    background:radial-gradient(120% 120% at 30% 20%, var(--ember-soft), var(--ember) 45%, var(--ember-deep) 100%);
+    box-shadow:0 4px 14px -4px rgba(224,112,28,.7), inset 0 1px 1px rgba(255,255,255,.5); }
+  .brand .mark::after{ content:""; position:absolute; inset:7px; border-radius:50%; background:rgba(255,255,255,.92); box-shadow:0 0 8px rgba(255,255,255,.6); }
+  .brand .name{ font-family:var(--serif); font-weight:600; font-size:23px; letter-spacing:-.01em; }
+  .back{ font-family:var(--mono); font-size:12px; letter-spacing:.04em; color:var(--ink-soft); }
+  .back:hover{ color:var(--ember-deep); }
+  .hero{ position:relative; background:radial-gradient(120% 95% at 50% -25%, #F5EFE6, var(--bg) 68%); padding:clamp(96px,12vw,150px) 0 clamp(44px,6vw,72px); text-align:center; overflow:hidden; }
+  .hero::before{ content:""; position:absolute; inset:0; background:radial-gradient(60% 70% at 50% 0%, rgba(224,112,28,.1), transparent 60%); pointer-events:none; }
+  .wrap{ position:relative; width:min(760px,90vw); margin-inline:auto; }
+  .kicker{ font-family:var(--mono); font-size:12px; font-weight:500; letter-spacing:.22em; text-transform:uppercase; color:var(--ember-deep); }
+  h1{ font-family:var(--serif); font-weight:500; font-size:clamp(42px,6.4vw,76px); line-height:1.02; letter-spacing:-.015em; margin-top:14px; }
+  .updated{ margin-top:18px; font-family:var(--mono); font-size:12px; letter-spacing:.14em; color:var(--ink-faint); text-transform:uppercase; }
+  .intro{ font-size:20px; color:#473D34; max-width:60ch; margin:22px auto 0; }
   main{ padding:clamp(48px,7vw,88px) 0 clamp(70px,9vw,120px); }
   section{ margin-bottom:clamp(38px,5vw,56px); }
-  h2{ font-family:var(--serif); font-weight:600; font-size:clamp(26px,3.4vw,38px); color:var(--ink); margin-bottom:14px; letter-spacing:-.005em; }
-  h3{ font-family:var(--serif); font-weight:600; font-size:clamp(20px,2.4vw,26px); color:var(--ink); margin:28px 0 10px; }
+  h2{ font-family:var(--serif); font-weight:600; font-size:clamp(28px,3.6vw,42px); color:var(--ink); margin-bottom:14px; letter-spacing:-.01em; }
+  h3{ font-family:var(--serif); font-weight:600; font-size:clamp(21px,2.4vw,27px); color:var(--ink); margin:30px 0 10px; }
   h4{ font-family:var(--sans); font-weight:600; font-size:16px; color:var(--ink); margin:20px 0 8px; }
   section > p:first-of-type{ margin-top:4px; }
-  p{ font-size:16.5px; color:var(--ink-soft); margin-bottom:14px; }
+  p{ font-size:18px; color:#3D352D; margin-bottom:15px; }
   p strong{ color:var(--ink); font-weight:600; }
   ul{ margin:0 0 14px 1.1em; }
-  li{ font-size:16.5px; color:var(--ink-soft); margin-bottom:9px; }
-  .callout{ background:var(--ivory-2); border-radius:20px; padding:28px 32px; box-shadow:0 18px 44px -28px rgba(76,46,28,.4); }
+  li{ font-size:18px; color:#3D352D; margin-bottom:10px; }
+  li::marker{ color:var(--ember); }
+  .callout{ background:var(--surface); border:1px solid var(--line); border-radius:18px; padding:28px 32px; box-shadow:0 18px 44px -30px rgba(25,21,18,.5); }
   .callout p:last-child{ margin-bottom:0; }
-  footer{ background:var(--ink); color:rgba(255,247,238,.65); padding:40px 0; font-size:14px; }
-  footer .wrap{ display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; }
-  footer a{ color:rgba(255,247,238,.85); }
-  footer .disclaimer{ width:100%; order:3; margin-top:8px; font-size:12.5px; line-height:1.6; color:rgba(255,247,238,.4); max-width:64ch; }
+  footer{ background:var(--night-2); color:var(--on-night-soft); padding:46px 0 34px; font-size:14px; }
+  footer .wrap{ display:flex; justify-content:space-between; align-items:center; gap:14px 20px; flex-wrap:wrap; }
+  footer .wrap > span:first-child{ font-family:var(--serif); font-size:16px; color:var(--on-night); }
+  footer a{ color:rgba(244,236,226,.82); transition:color .2s; }
+  footer a:hover{ color:var(--ember-soft); text-decoration:none; }
+  footer .disclaimer{ width:100%; order:3; margin-top:10px; font-size:12.5px; line-height:1.6; color:rgba(244,236,226,.4); max-width:64ch; }
 </style>
 </head>
 <body>
   <div class="topbar">
-    <a class="brand" href="index.html"><img src="assets/icon.png" alt="Listly"><span class="name">Listly</span></a>
+    <a class="brand" href="index.html"><span class="mark"></span><span class="name">Listly</span></a>
     <a class="back" href="index.html">← Back to home</a>
   </div>
 
   <header class="hero">
     <div class="wrap">
       <h1>Terms of Service</h1>
-      <p class="updated">Last updated: March 2026</p>
+      <p class="updated">Last updated: June 2026</p>
+      <p class="intro">These Terms govern your use of Listly, the multi-store management platform for Etsy sellers. Please read them carefully before connecting a shop.</p>
     </div>
   </header>
 
   <main>
     <div class="wrap">
       <section>
+        <div class="callout">
+          <p><strong>The term &lsquo;Etsy&rsquo; is a trademark of Etsy, Inc. This application uses the Etsy API but is not endorsed or certified by Etsy, Inc.</strong></p>
+          <p>Listly is an independent product. It is not affiliated with, sponsored by, or operated by Etsy, Inc. We connect to your Etsy shop only through Etsy's official API and the permissions you explicitly authorize.</p>
+        </div>
+      </section>
+
+      <section>
         <h2>1. Agreement to Terms</h2>
-        <p>By downloading, installing, or using Listly, operated by Listly ("we", "us", "our"), you agree to be bound by these Terms of Service ("Terms"). If you disagree with any part of these Terms, you may not access the Service.</p>
-        <p>These Terms, together with our <a href="privacy.html">Privacy Policy</a> and <a href="https://www.etsy.com/legal/api" target="_blank" rel="noopener">Etsy's API Terms of Use</a>, constitute the entire agreement between you and Listly regarding the Service. By using the Service, you acknowledge that you have read and understood these documents.</p>
+        <p>By creating an account, connecting an Etsy shop, or otherwise using Listly, operated by Listly ("we", "us", "our"), you agree to be bound by these Terms of Service ("Terms"). If you disagree with any part of these Terms, you may not access the Service.</p>
+        <p>These Terms, together with our <a href="https://trylistly.com/privacy">Privacy Policy</a> and <a href="https://www.etsy.com/legal/api" target="_blank" rel="noopener">Etsy's API Terms of Use</a>, constitute the entire agreement between you and Listly regarding the Service. By using the Service, you acknowledge that you have read and understood these documents.</p>
       </section>
 
       <section>
@@ -84,27 +105,26 @@
 
       <section>
         <h2>3. What Listly Does</h2>
-        <p>Listly is a mobile application that uses artificial intelligence to help Etsy sellers create product listings. It is not a marketplace. Listly does not buy or sell goods. Current features include:</p>
+        <p>Listly is a web-based management platform that brings everything Etsy sellers run — across one shop or many — onto a single screen. It is not a marketplace. Listly does not buy or sell goods. Current features include:</p>
         <ul>
-          <li><strong>AI Listing Generation:</strong> Photograph a product and receive an AI-generated title, description, tags, and category suggestions optimised for Etsy search</li>
-          <li><strong>Demand Score:</strong> Buyer interest indicators showing market demand for your product category</li>
-          <li><strong>Pricing Calculator:</strong> A profit calculator that accounts for Etsy's full fee structure including listing fees, transaction fees, payment processing fees, regulatory fees, and offsite ad fees</li>
-          <li><strong>Image Recommendations:</strong> Suggested image angles, backgrounds, and video content ideas for product photography</li>
-          <li><strong>Variation Suggestions:</strong> Recommended product variations based on your product type and category</li>
-          <li><strong>Streak Tracking:</strong> Daily listing habit tracking with streak counters and monthly progress</li>
-          <li><strong>Listing History:</strong> A complete archive of all listings generated through the Service</li>
-          <li><strong>Daily Reminders:</strong> Optional push notifications to encourage consistent listing habits</li>
+          <li><strong>Connect Unlimited Stores:</strong> Link as many Etsy shops as you operate through Etsy's OAuth flow and switch between them instantly, with no per-store fees</li>
+          <li><strong>Unified Dashboard:</strong> Profit, sales, orders, and average order value combined across every store or filtered to one, over custom date ranges with live trend charts</li>
+          <li><strong>Order Management:</strong> Track orders across every shop, import cost of goods sold for accurate profit per order, upload tracking, export data, and sync fulfilment</li>
+          <li><strong>Finance Tracking:</strong> Real profit after every fee, VAT, ad spend, and refund, reconciled against your Etsy payouts, with full breakdowns and every transaction cleanly organized</li>
+          <li><strong>Listing Management:</strong> View all listings across every store in one place, bulk edit, copy listings between shops, batch activate or delete, and automate stock</li>
+          <li><strong>AI Product Research:</strong> Real-time demand data plus AI-recommended titles, descriptions, and tags to help you validate a product before you list it</li>
         </ul>
-        <p>Features vary by subscription tier. Current pricing and feature availability are displayed within the app. We reserve the right to modify, suspend, or discontinue any feature at any time, with or without notice.</p>
+        <p>Listly currently connects to Etsy. Support for additional sales channels (such as TikTok Shop, eBay, and Shopify) is in development; these and any other channels are offered when and if released, with no guarantee of timing or availability. Features vary by subscription tier. Current pricing and feature availability are displayed within the app. We reserve the right to modify, suspend, or discontinue any feature at any time, with or without notice.</p>
       </section>
 
       <section>
         <h2>4. Etsy Integration</h2>
         <h3>4.1 Connecting Your Etsy Shop</h3>
-        <p>Listly integrates with the Etsy platform via the Etsy API to provide listing generation, market insights, and shop management tools. Your use of Listly's Etsy integration features is subject to <a href="https://www.etsy.com/legal/api" target="_blank" rel="noopener">Etsy's API Terms of Use</a>, which are incorporated into these Terms by reference. By connecting your Etsy shop, you grant Listly permission to access your Etsy account within the scopes you approve during the OAuth 2.0 authorization flow. The specific permissions we request include:</p>
+        <p>Listly integrates with the Etsy platform via the Etsy API to provide multi-store dashboards, order and finance tracking, listing management, and product research tools. Your use of Listly's Etsy integration features is subject to <a href="https://www.etsy.com/legal/api" target="_blank" rel="noopener">Etsy's API Terms of Use</a>, which are incorporated into these Terms by reference. By connecting your Etsy shop, you grant Listly permission to access your Etsy account within the scopes you approve during the OAuth 2.0 authorization flow. The specific permissions we request include:</p>
         <ul>
           <li>Read and update your shop information and settings</li>
-          <li>Read, create, update, and delete your product listings</li>
+          <li>Read, create, update, and delete your product listings and inventory</li>
+          <li>Read your shop's orders, transactions, and payout records</li>
           <li>Read your Etsy user profile and account information</li>
         </ul>
 
@@ -132,12 +152,13 @@
       </section>
 
       <section>
-        <h2>5. Listing Content and Publishing</h2>
+        <h2>5. Listing Management and Publishing</h2>
         <ul>
-          <li>Listly generates listing content (titles, descriptions, tags, pricing recommendations) based on product photographs you provide</li>
-          <li>You are solely responsible for all listing content you create, edit, or publish using content generated by Listly, including accuracy, pricing, compliance with Etsy's listing policies, intellectual property rights, product safety regulations, and all applicable laws</li>
+          <li>Listly lets you create, edit, copy between shops, bulk-edit, activate, delete, and otherwise manage Etsy listings, and can generate suggested listing content (titles, descriptions, tags, pricing recommendations)</li>
+          <li>You are solely responsible for all listing content and changes you create, edit, or publish through Listly, including accuracy, pricing, inventory levels, compliance with Etsy's listing policies, intellectual property rights, product safety regulations, and all applicable laws</li>
+          <li>Bulk actions (such as bulk edits, batch activation or deletion, and cross-shop copying) take effect on your Etsy shop. You are responsible for reviewing the scope of any bulk action before confirming it, and Listly is not liable for changes you apply to your listings or inventory</li>
           <li>Listly does not review or pre-approve listing content before you use it</li>
-          <li>Listly is not responsible for Etsy removing, flagging, or penalizing listings that use content generated through our platform</li>
+          <li>Listly is not responsible for Etsy removing, flagging, or penalizing listings managed or generated through our platform</li>
           <li>Any content generated by Listly is a recommendation. You are responsible for reviewing and approving all content before publishing it to any platform</li>
         </ul>
       </section>
@@ -145,9 +166,9 @@
       <section>
         <h2>6. AI-Powered Features</h2>
         <h3>6.1 How AI Generation Works</h3>
-        <p>Listly uses AI models to analyse your product photographs and generate listing content. When you use AI features:</p>
+        <p>Listly uses AI models to analyse the product information you provide — such as product details, photographs, and category — along with market data, to generate listing content and research insights. When you use AI features:</p>
         <ul>
-          <li>Your product photographs and any context you provide are sent to third-party AI providers for processing</li>
+          <li>The product information and any context you provide are sent to third-party AI providers for processing</li>
           <li>Generated content is returned to Listly and stored in your account</li>
           <li>Your personal account data is not sent to the AI provider beyond what is necessary for content generation</li>
         </ul>
@@ -173,25 +194,25 @@
       <section>
         <h2>7. Subscription and Billing</h2>
         <h3>7.1 Subscription Plans</h3>
-        <p>Listly offers subscription access through in-app purchases via the Apple App Store. A subscription is required to access listing generation and premium features. We may offer a free trial period for new users.</p>
+        <p>Listly offers a free plan and paid subscription plans. You can create an account and connect a shop on the free plan with no credit card required. A paid subscription is required to access premium features and higher usage limits. We may offer a free trial period for new users.</p>
 
         <h3>7.2 Payment Terms</h3>
         <ul>
-          <li>All payments are processed through Apple's App Store billing system</li>
-          <li>Payment will be charged to your Apple ID account at confirmation of purchase</li>
-          <li>Subscriptions automatically renew unless auto-renewal is turned off at least 24 hours before the end of the current period</li>
-          <li>Your account will be charged for renewal within 24 hours prior to the end of the current period</li>
-          <li>If you subscribe before your free trial ends, the remaining free trial period will be forfeited when your purchase is confirmed</li>
+          <li>Paid subscriptions are billed through our third-party payment processor on a recurring basis (monthly or annually, as selected at checkout)</li>
+          <li>By starting a paid subscription, you authorize us and our payment processor to charge your chosen payment method at the start of each billing period</li>
+          <li>Subscriptions automatically renew at the end of each billing period unless you cancel before the renewal date</li>
+          <li>Applicable taxes may be added to the subscription price based on your location</li>
+          <li>If a payment fails, we may suspend or downgrade access to paid features until payment is resolved</li>
         </ul>
 
         <h3>7.3 Managing Your Subscription</h3>
-        <p>You can manage and cancel your subscription at any time through your Apple ID Account Settings. Upon cancellation, you will retain access to paid features until the end of your current billing period.</p>
+        <p>You can manage, upgrade, downgrade, or cancel your subscription at any time from your Listly account settings. Upon cancellation, you will retain access to paid features until the end of your current billing period, after which your account reverts to the free plan.</p>
 
         <h3>7.4 Refund Policy</h3>
-        <p>Refunds for App Store purchases are handled by Apple in accordance with Apple's refund policies. To request a refund, visit Apple's support page or contact Apple directly through your purchase history. Listly does not process refunds directly.</p>
+        <p>Except where required by applicable law, subscription fees are non-refundable and we do not provide refunds or credits for partial billing periods or unused features. If you believe you have been billed in error, contact us at <a href="mailto:support@trylistly.com">support@trylistly.com</a> and we will review your request.</p>
 
         <h3>7.5 Price Changes</h3>
-        <p>We reserve the right to change our pricing. Price changes will be communicated through the App Store and will apply to the next billing period following the change. If you do not agree with a price change, you may cancel your subscription before the new price takes effect.</p>
+        <p>We reserve the right to change our pricing. Price changes will be communicated in advance and will apply to the next billing period following the change. If you do not agree with a price change, you may cancel your subscription before the new price takes effect.</p>
       </section>
 
       <section>
@@ -224,8 +245,8 @@
         <p>The Service integrates with the following third-party platforms and services:</p>
         <ul>
           <li><strong>Etsy:</strong> marketplace platform (data source and destination for your shop via the Etsy API)</li>
-          <li><strong>Apple App Store:</strong> subscription billing and distribution</li>
-          <li><strong>AI providers:</strong> text and content generation from product photographs</li>
+          <li><strong>Payment processor:</strong> subscription billing and payment handling</li>
+          <li><strong>AI providers:</strong> text and content generation and product research</li>
           <li><strong>Supabase:</strong> data storage and authentication</li>
           <li><strong>PostHog:</strong> product analytics</li>
           <li><strong>Apple and Google:</strong> authentication (Sign in with Apple, Sign in with Google)</li>
@@ -236,7 +257,7 @@
           <li>We are not responsible for the availability, accuracy, or content of third-party services</li>
           <li>Changes to third-party services or their APIs may affect the functionality of Listly</li>
         </ul>
-        <p>The term "Etsy" is a trademark of Etsy, Inc. This application uses the Etsy API but is not endorsed or certified by Etsy, Inc.</p>
+        <p><strong>The term &lsquo;Etsy&rsquo; is a trademark of Etsy, Inc. This application uses the Etsy API but is not endorsed or certified by Etsy, Inc.</strong></p>
       </section>
 
       <section>
@@ -256,7 +277,7 @@
 
       <section>
         <h2>11. Data and Privacy</h2>
-        <p>Your use of the Service is governed by our <a href="privacy.html">Privacy Policy</a>, which is incorporated into these Terms by reference. Please review it carefully to understand how we collect, use, and protect your data.</p>
+        <p>Your use of the Service is governed by our <a href="https://trylistly.com/privacy">Privacy Policy</a>, which is incorporated into these Terms by reference. Please review it carefully to understand how we collect, use, and protect your data.</p>
       </section>
 
       <section>
@@ -297,7 +318,7 @@
       <section>
         <h2>14. Termination</h2>
         <h3>14.1 Termination by You</h3>
-        <p>You may terminate your account at any time by canceling your subscription through your Apple ID Account Settings and requesting account deletion through the app's Profile settings. Upon account deletion, all your data is permanently deleted, including account data, generated listings, and listing history.</p>
+        <p>You may terminate your account at any time by canceling your subscription and requesting account deletion from your Listly account settings. Upon account deletion, all your data is permanently deleted, including account data, connected shop data, orders, finances, and listing records, and any active OAuth tokens are revoked.</p>
 
         <h3>14.2 Termination by Us</h3>
         <p>We may suspend or terminate your account immediately, without prior notice, if you:</p>

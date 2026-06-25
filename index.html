@@ -3,89 +3,439 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Listly · Turn one photo into a complete Etsy listing</title>
-<meta name="description" content="Snap your handmade piece. Listly writes the title, description, tags and price beautifully, the way a careful artisan would. You just press publish.">
+<title>Listly · Your whole Etsy business, on one screen</title>
+<meta name="description" content="Orders, finances, listings, and research for every Etsy store — managed on one screen. Real-time profit with COGS. AI product research. Built for Etsy sellers.">
+<link rel="icon" href="assets/icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=8">
-<link rel="icon" href="assets/icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<template id="__bundler_thumbnail" data-bg-color="#1a1410">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="g" cx="50%" cy="46%" r="42%">
+        <stop offset="0%" stop-color="#e8862e"/>
+        <stop offset="55%" stop-color="#c45418"/>
+        <stop offset="100%" stop-color="#1a1410"/>
+      </radialGradient>
+    </defs>
+    <circle cx="600" cy="370" r="190" fill="url(#g)"/>
+    <text x="600" y="660" font-family="Georgia, 'Times New Roman', serif" font-size="120" font-style="italic" fill="#f4ece2" text-anchor="middle">Listly</text>
+  </svg>
+</template>
 </head>
-<body data-active-hero="1" data-tone="parchment" data-density="regular">
+<body>
 
-<!-- ============================ NAV ============================ -->
-<header class="nav" id="nav">
-  <a class="brand" href="#top">
-    <img src="assets/icon.png" alt="Listly">
-    <span class="name">Listly</span>
-  </a>
-  <a class="appstore mini" href="#" aria-label="Download on the App Store">
-    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 12.54c-.02-2.07 1.69-3.06 1.77-3.11-.96-1.41-2.46-1.6-2.99-1.62-1.27-.13-2.49.75-3.13.75-.65 0-1.64-.73-2.7-.71-1.39.02-2.67.81-3.38 2.05-1.44 2.5-.37 6.2 1.04 8.23.69.99 1.51 2.11 2.58 2.07 1.04-.04 1.43-.67 2.69-.67 1.25 0 1.6.67 2.69.65 1.11-.02 1.81-1.01 2.49-2.01.78-1.15 1.11-2.27 1.13-2.33-.02-.01-2.17-.83-2.19-3.3zM15.01 6.18c.57-.69.96-1.65.85-2.61-.82.03-1.82.55-2.41 1.24-.53.61-.99 1.59-.87 2.52.92.07 1.86-.47 2.43-1.15z"/></svg>
-    <span class="as-txt"><small>Download on the</small><strong>App Store</strong></span>
-  </a>
-</header>
+  <!-- ============================ NAV ============================ -->
+  <nav class="nav on-dark" id="nav">
+    <a class="brand" href="#top"><span class="mark"></span>Listly</a>
+    <div class="nav-links">
+      <a href="#capabilities">Product</a>
+      <a href="#features">Features</a>
+      <a href="#compare">Why Listly</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <div class="nav-cta">
+      <a href="#" class="login">Login</a>
+      <a href="#start" class="btn btn-primary">Get Started Free</a>
+    </div>
+  </nav>
 
-<main id="top">
+  <!-- ============================ HERO ============================ -->
+  <header class="hero" id="top">
+    <div class="orb" aria-hidden="true">
+      <div class="halo"></div>
+      <canvas id="orb-canvas"></canvas>
+    </div>
 
-  <!-- ====================== HERO — terracotta immersive ====================== -->
-  <section class="hero hero1" data-hero="1">
-    <div class="glow"></div>
-    <div class="wrap" style="display:flex;flex-direction:column;align-items:center;">
-      <h1 class="h1 reveal d1">Turn one photo into a <em>complete listing</em> in seconds.</h1>
-      <p class="lead reveal d2">Snap your handmade piece. Listly writes the title, description, tags and price beautifully, the way a careful artisan would. You just press publish.</p>
-      <div class="cta-row reveal d2">
-        <a class="appstore" href="#"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 12.54c-.02-2.07 1.69-3.06 1.77-3.11-.96-1.41-2.46-1.6-2.99-1.62-1.27-.13-2.49.75-3.13.75-.65 0-1.64-.73-2.7-.71-1.39.02-2.67.81-3.38 2.05-1.44 2.5-.37 6.2 1.04 8.23.69.99 1.51 2.11 2.58 2.07 1.04-.04 1.43-.67 2.69-.67 1.25 0 1.6.67 2.69.65 1.11-.02 1.81-1.01 2.49-2.01.78-1.15 1.11-2.27 1.13-2.33-.02-.01-2.17-.83-2.19-3.3zM15.01 6.18c.57-.69.96-1.65.85-2.61-.82.03-1.82.55-2.41 1.24-.53.61-.99 1.59-.87 2.52.92.07 1.86-.47 2.43-1.15z"/></svg><span class="as-txt"><small>Download on the</small><strong>App Store</strong></span></a>
+    <div class="hero-inner">
+      <span class="eyebrow center">Every Etsy store · one screen</span>
+      <h1>Your whole Etsy<br>business, on <em>one screen.</em></h1>
+      <p class="sub">Orders, finances, listings, and research — synced across every shop you run. Real-time profit after every fee. AI product research built in.</p>
+      <div class="hero-actions">
+        <a href="#start" class="btn btn-primary">Get Started Free <span class="arr">→</span></a>
+        <a href="#features" class="btn btn-dark">See how it works</a>
       </div>
-      <div class="stage reveal d3">
-        <span class="scan" style="inset:-34px;color:rgba(255,247,238,.45);"><span class="tl"></span><span class="tr"></span><span class="bl"></span><span class="br"></span></span>
-        <div class="phone" data-screen="listing"></div>
+      <p class="nocard">No credit card required</p>
+
+      <div class="market">
+        <span class="pill"><span class="dot"></span>Live on Etsy</span>
+        <span class="pill soon"><span class="dot"></span>TikTok Shop · soon</span>
+        <span class="pill soon"><span class="dot"></span>eBay · soon</span>
+        <span class="pill soon"><span class="dot"></span>Shopify · soon</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================ STATS ============================ -->
+  <section class="stats">
+    <div class="wrap">
+      <div class="stat reveal"><span class="n">63<em>+</em></span><span class="l">Etsy stores connected and syncing</span></div>
+      <div class="stat reveal d1"><span class="n">$142<em>k</em></span><span class="l">In order value handled on Listly</span></div>
+      <div class="stat reveal d2"><span class="n">3,521</span><span class="l">Orders tracked across every shop</span></div>
+      <div class="stat reveal d3"><span class="n">800<em>K+</em></span><span class="l">Products analyzed with real-time data</span></div>
+    </div>
+  </section>
+
+  <!-- ====================== CAPABILITIES ====================== -->
+  <section class="pad" id="capabilities">
+    <div class="wrap">
+      <div class="section-head center reveal">
+        <span class="eyebrow center">Core capabilities</span>
+        <h2 class="section-title">One platform. Every tool<br>your shop needs.</h2>
+        <p class="lede">Every other tool is a slice — research only, listing only, multichannel only. Listly is the whole stack, built for Etsy sellers.</p>
+      </div>
+
+      <div class="caps">
+        <div class="cap reveal">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/></svg></div>
+          <h3>Connect unlimited stores</h3>
+          <p>Link every Etsy shop in one click. No per-store fees, no limits — switch between shops instantly.</p>
+        </div>
+        <div class="cap reveal d1">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="5" rx="1.5"/><rect x="13" y="10" width="8" height="11" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/></svg></div>
+          <h3>Unified dashboard</h3>
+          <p>Profit, sales, orders, and average order value across all stores — custom date ranges with trend charts.</p>
+        </div>
+        <div class="cap reveal d2">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 7h18M3 12h18M3 17h12"/></svg></div>
+          <h3>Order management</h3>
+          <p>Import COGS for accurate profit per order, upload tracking, export data, sync fulfilment, and more.</p>
+        </div>
+        <div class="cap reveal">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 19V5M4 19h16M8 15l3-4 3 2 4-6"/></svg></div>
+          <h3>Finance tracking</h3>
+          <p>Real profit after fees, VAT, ad spend and refunds — matched to Etsy to the cent, with every transaction cleanly organized.</p>
+        </div>
+        <div class="cap reveal d1">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 14h8"/></svg></div>
+          <h3>Listing management</h3>
+          <p>All listings across every store in one view. Bulk edit, copy between shops, batch activate or delete, automate stock.</p>
+        </div>
+        <div class="cap reveal d2">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l2.2 4.8L19 9l-3.5 3.3.9 5-4.4-2.4L7.6 17l.9-5L5 9l4.8-1.2z"/></svg></div>
+          <h3>AI product research</h3>
+          <p>Real-time demand data and AI-vetted titles, descriptions, and tags — validate a product before you list it.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ====================== HOW IT WORKS ====================== -->
-  <section class="section" id="how">
+  <!-- ====================== FEATURE SHOWCASE ====================== -->
+  <section class="pad" id="features" style="padding-top:0;">
     <div class="wrap">
       <div class="section-head reveal">
-        <p class="eyebrow">One photo. One tap. Done.</p>
-        <h2 style="margin-top:16px;">A complete listing, <em>unfolding</em> in front of you.</h2>
-        <p class="lead">No forms to fill, no blank pages to stare at. In seconds, Listly thoughtfully prepares your entire listing, without you needing to lift a finger.</p>
+        <span class="eyebrow">The workflow</span>
+        <h2 class="section-title">Built for the way<br>sellers <em>actually work.</em></h2>
       </div>
-      <div class="steps">
-        <div class="step reveal">
-          <span class="num">i.</span>
-          <div class="phone" data-screen="camera"></div>
-          <h3>Snap a photo</h3>
-          <p>Point your camera at the piece. One frame is all Listly needs.</p>
+
+      <div class="showcase">
+
+        <!-- 1 — Connect unlimited stores -->
+        <div class="feature-row reveal">
+          <div class="copy">
+            <span class="tag">Connect unlimited stores</span>
+            <h3>Every shop, one login.</h3>
+            <p>Link as many Etsy stores as you run and Listly keeps them all in sync. No per-store fees, no juggling tabs — switch between shops in a single click.</p>
+            <ul class="checks">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12l4 4L19 6"/></svg>One-click OAuth connect</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12l4 4L19 6"/></svg>No per-store fees, ever</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12l4 4L19 6"/></svg>Inventory synced across shops</li>
+            </ul>
+          </div>
+          <div class="visual">
+            <div class="frame">
+              <div class="bar"><i></i><i></i><i></i><span class="url">listly.app/stores</span></div>
+              <div class="mock" data-slot="stores">
+                <aside class="side">
+                  <div class="brand"><span class="d"></span><b>Listly</b></div>
+                  <nav class="nav">
+                    <a><i></i>Dashboard</a>
+                    <a class="on"><i></i>Stores</a>
+                    <a><i></i>Orders</a>
+                    <a><i></i>Listings</a>
+                    <a><i></i>Research</a>
+                  </nav>
+                  <div class="seg"><span class="av">M</span><div><b>Maya R.</b><span>5 stores</span></div></div>
+                </aside>
+                <div class="main">
+                  <div class="mhead">
+                    <h4>Stores<em>5 connected</em></h4>
+                    <div class="chips"><span class="chip">All synced</span></div>
+                  </div>
+                  <div class="stores">
+                    <div class="srow"><span class="sa" style="background:#5E1A1D">W</span><div class="sm"><b>WillowKnots</b><span>1,204 listings · synced 2m ago</span></div><span class="badge ok">Synced</span></div>
+                    <div class="srow"><span class="sa" style="background:#2E6B57">N</span><div class="sm"><b>NorthPine&nbsp;Co</b><span>642 listings · synced 5m ago</span></div><span class="badge ok">Synced</span></div>
+                    <div class="srow"><span class="sa" style="background:#E0701C">E</span><div class="sm"><b>EmberCeramics</b><span>318 listings · syncing now…</span></div><span class="badge syn">Syncing</span></div>
+                    <div class="srow"><span class="sa" style="background:#3A4E8C">L</span><div class="sm"><b>LunaPaperie</b><span>889 listings · synced 1m ago</span></div><span class="badge ok">Synced</span></div>
+                    <div class="addrow"><span class="p">+</span>Connect another store</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="step reveal d1">
-          <span class="num">ii.</span>
-          <div class="phone" data-screen="detail"></div>
-          <h3>Watch it write</h3>
-          <p>Title, description, tags, even video ideas, written for you and ready to tweak.</p>
+
+        <!-- 2 — Unified dashboard -->
+        <div class="feature-row flip reveal">
+          <div class="copy">
+            <span class="tag">Unified dashboard</span>
+            <h3>The whole business, at a glance.</h3>
+            <p>Profit, sales, orders, and average order value — combined across every store or filtered to one. Pick any date range and watch the trend charts update live.</p>
+            <ul class="checks">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12l4 4L19 6"/></svg>Multi-store and per-store views</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12l4 4L19 6"/></svg>Custom date ranges</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12l4 4L19 6"/></svg>Trend charts that update live</li>
+            </ul>
+          </div>
+          <div class="visual">
+            <div class="frame">
+              <div class="bar"><i></i><i></i><i></i><span class="url">listly.app/dashboard</span></div>
+              <div class="mock" data-slot="dashboard">
+                <aside class="side">
+                  <div class="brand"><span class="d"></span><b>Listly</b></div>
+                  <nav class="nav">
+                    <a class="on"><i></i>Dashboard</a>
+                    <a><i></i>Stores</a>
+                    <a><i></i>Orders</a>
+                    <a><i></i>Listings</a>
+                    <a><i></i>Research</a>
+                  </nav>
+                  <div class="seg"><span class="av">M</span><div><b>Maya R.</b><span>All stores</span></div></div>
+                </aside>
+                <div class="main">
+                  <div class="mhead">
+                    <h4>Dashboard</h4>
+                    <div class="chips"><span class="chip act">All stores</span><span class="chip">Last 30 days</span></div>
+                  </div>
+                  <div class="kpis">
+                    <div class="kpi"><div class="k">Net profit</div><div class="v">$18,420</div><div class="dlt">▲ 12.4%</div></div>
+                    <div class="kpi"><div class="k">Revenue</div><div class="v">$42,180</div><div class="dlt">▲ 8.1%</div></div>
+                    <div class="kpi"><div class="k">Orders</div><div class="v">1,043</div><div class="dlt">▲ 5.6%</div></div>
+                    <div class="kpi"><div class="k">Avg order</div><div class="v">$40.44</div><div class="dlt dn">▼ 1.2%</div></div>
+                  </div>
+                  <div class="chart">
+                    <div class="clab"><b>Profit trend</b><span>Mar 1 – Mar 30</span></div>
+                    <div class="bars">
+                      <i style="height:38%"></i><i style="height:52%"></i><i style="height:44%"></i><i style="height:61%"></i><i style="height:55%"></i><i style="height:70%"></i><i style="height:64%"></i><i class="hi" style="height:88%"></i><i style="height:73%"></i><i style="height:81%"></i><i style="height:67%"></i><i class="hi" style="height:95%"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="step reveal d2">
-          <span class="num">iii.</span>
-          <div class="phone" data-screen="pricing"></div>
-          <h3>Price it for profit</h3>
-          <p>Listly works back from every Etsy fee to the sell price that protects your margin.</p>
+
+        <!-- 3 — Order management + COGS profit -->
+        <div class="feature-row reveal">
+          <div class="copy">
+            <span class="tag">Order management · COGS profit</span>
+            <h3>Know your real profit per order.</h3>
+            <p>Import your cost of goods and Listly calculates true profit on every single order — after fees, shipping, and refunds. Upload tracking, sync fulfilment, and export it all.</p>
+            <ul class="checks">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12l4 4L19 6"/></svg>Import COGS by CSV or per-product</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12l4 4L19 6"/></svg>Accurate profit on every order</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12l4 4L19 6"/></svg>Upload tracking &amp; export data</li>
+            </ul>
+          </div>
+          <div class="visual">
+            <div class="frame">
+              <div class="bar"><i></i><i></i><i></i><span class="url">listly.app/orders</span></div>
+              <div class="mock" data-slot="orders">
+                <aside class="side">
+                  <div class="brand"><span class="d"></span><b>Listly</b></div>
+                  <nav class="nav">
+                    <a><i></i>Dashboard</a>
+                    <a><i></i>Stores</a>
+                    <a class="on"><i></i>Orders</a>
+                    <a><i></i>Listings</a>
+                    <a><i></i>Research</a>
+                  </nav>
+                  <div class="seg"><span class="av">M</span><div><b>Maya R.</b><span>All stores</span></div></div>
+                </aside>
+                <div class="main">
+                  <div class="mhead">
+                    <h4>Orders<em>1,043 this month</em></h4>
+                    <div class="chips"><span class="chip">COGS imported</span></div>
+                  </div>
+                  <div class="otable">
+                    <div class="tr th"><span>Order</span><span>Item</span><span class="num">Revenue</span><span class="num">COGS</span><span class="num">Profit</span></div>
+                    <div class="tr"><span class="oid">#3041</span><span class="it"><span class="th-sw" style="background:#C98A4B"></span><b>Linen Apron</b></span><span class="num">$48.00</span><span class="num cogs">$14.20</span><span class="pf">+$24.80</span></div>
+                    <div class="tr"><span class="oid">#3040</span><span class="it"><span class="th-sw" style="background:#8C6E4A"></span><b>Oak Coasters ×4</b></span><span class="num">$36.00</span><span class="num cogs">$9.50</span><span class="pf">+$19.10</span></div>
+                    <div class="tr"><span class="oid">#3039</span><span class="it"><span class="th-sw" style="background:#7A2225"></span><b>Wool Throw</b></span><span class="num">$120.00</span><span class="num cogs">$52.00</span><span class="pf">+$48.30</span></div>
+                    <div class="tr"><span class="oid">#3038</span><span class="it"><span class="th-sw" style="background:#B5912F"></span><b>Brass Candle</b></span><span class="num">$28.00</span><span class="num cogs">$8.00</span><span class="pf">+$13.90</span></div>
+                    <div class="tr"><span class="oid">#3037</span><span class="it"><span class="th-sw" style="background:#3A6B57"></span><b>Sage Planter</b></span><span class="num">$54.00</span><span class="num cogs">$17.40</span><span class="pf">+$27.60</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+
+        <!-- 4 — Finance tracking (removed) -->
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== COMPARISON ====================== -->
+  <section class="pad compare" id="compare">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Why sellers switch</span>
+        <h2 class="section-title">The feature gap,<br><em>plain and simple.</em></h2>
+        <p class="lede">Research tools don't manage orders. Listing tools don't track finances. Listly does all of it — so you stop paying for three apps that don't talk to each other.</p>
+      </div>
+
+      <table class="ctable reveal">
+        <thead>
+          <tr>
+            <th>Capability</th>
+            <th>Research<br>tools</th>
+            <th>Listing<br>tools</th>
+            <th>Multichannel<br>tools</th>
+            <th class="listly listly-col"><span class="brandcell">Listly</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Product research</td>
+            <td class="yes">●</td><td class="no">—</td><td class="no">—</td>
+            <td class="listly-col yes">●</td>
+          </tr>
+          <tr>
+            <td>Managing orders</td>
+            <td class="no">—</td><td class="partial">◐</td><td class="yes">●</td>
+            <td class="listly-col yes">●</td>
+          </tr>
+          <tr>
+            <td>Managing finances</td>
+            <td class="no">—</td><td class="no">—</td><td class="partial">◐</td>
+            <td class="listly-col yes">●</td>
+          </tr>
+          <tr>
+            <td>Unlimited stores</td>
+            <td class="no">—</td><td class="partial">◐</td><td class="partial">◐</td>
+            <td class="listly-col yes">●</td>
+          </tr>
+          <tr>
+            <td>COGS profit per order</td>
+            <td class="no">—</td><td class="no">—</td><td class="no">—</td>
+            <td class="listly-col yes">●</td>
+          </tr>
+          <tr>
+            <td>AI listing upload</td>
+            <td class="no">—</td><td class="partial">◐</td><td class="no">—</td>
+            <td class="listly-col yes">●</td>
+          </tr>
+          <tr>
+            <td>Direct access to founder</td>
+            <td class="no">—</td><td class="no">—</td><td class="no">—</td>
+            <td class="listly-col yes">●</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="compare-legend reveal">
+        <span><b style="background:var(--ember)"></b>Full support</span>
+        <span><b style="background:var(--on-night-soft)"></b>Partial / limited</span>
+        <span><b style="background:rgba(244,236,226,.22)"></b>Not offered</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== TESTIMONIALS ====================== -->
+  <section class="pad" id="voices">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Sellers, real ones</span>
+        <h2 class="section-title">What sellers are <em>saying.</em></h2>
+        <p class="lede">No paid reviews, no ghostwritten quotes. Real messages from real Etsy sellers who switched to Listly.</p>
+      </div>
+
+      <div class="voices">
+        <div class="discord-card reveal">
+          <span class="eyebrow center">Community</span>
+          <h3>Join the sellers on Discord.</h3>
+          <p>Get support, trade what's working, and connect with real Etsy sellers — with the founder in the room.</p>
+          <div class="discord-stats">
+            <div class="ds"><div class="n">192</div><div class="l">sellers</div></div>
+            <div class="ds"><div class="n">24h</div><div class="l">avg reply</div></div>
+            <div class="ds"><div class="n">1:1</div><div class="l">with founder</div></div>
+          </div>
+          <a href="#" class="btn btn-dark">Join Discord</a>
+        </div>
+
+        <div class="tcards">
+          <div class="tcard reveal">
+            <div class="stars">★★★★★</div>
+            <p>“I was paying for three different tools. <span class="hl">Listly replaced all of them</span> and finally showed me my real profit after fees.”</p>
+            <div class="who"><div class="av">M</div><div><div class="nm">Maya R.</div><div class="rl">Jewelry · 2 shops</div></div></div>
+          </div>
+          <div class="tcard reveal d1">
+            <div class="stars">★★★★★</div>
+            <p>“The COGS profit per order is the thing I didn't know I needed. <span class="hl">Now I know which listings actually make money.</span>”</p>
+            <div class="who"><div class="av">J</div><div><div class="nm">Jordan T.</div><div class="rl">Home goods · 1 shop</div></div></div>
+          </div>
+          <div class="tcard reveal d1">
+            <div class="stars">★★★★★</div>
+            <p>“Switching between five shops used to eat my mornings. <span class="hl">One login now runs everything.</span>”</p>
+            <div class="who"><div class="av">P</div><div><div class="nm">Priya K.</div><div class="rl">Apparel · 5 shops</div></div></div>
+          </div>
+          <div class="tcard reveal d2">
+            <div class="stars">★★★★★</div>
+            <p>“Finances match my Etsy payouts to the cent. <span class="hl">Tax season went from a week to an afternoon.</span>”</p>
+            <div class="who"><div class="av">D</div><div><div class="nm">Dani M.</div><div class="rl">Stationery · 3 shops</div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== FAQ ====================== -->
+  <section class="pad" id="faq" style="background:var(--bg-2);">
+    <div class="wrap">
+      <div class="section-head center reveal">
+        <span class="eyebrow center">FAQ</span>
+        <h2 class="section-title">Frequently asked questions</h2>
+      </div>
+
+      <div class="faq-wrap reveal">
+        <details class="faq" open>
+          <summary>Do I need a credit card?<span class="pm"></span></summary>
+          <div class="ans"><p>No. The free plan is completely free with no credit card required. You only need a card if you choose to upgrade to a paid plan.</p></div>
+        </details>
+        <details class="faq">
+          <summary>Can I connect more than one Etsy shop?<span class="pm"></span></summary>
+          <div class="ans"><p>Yes. Connect unlimited Etsy stores on higher tiers, so one login runs every shop you own. The free tier connects one Etsy store so you can test every feature with no blockers.</p></div>
+        </details>
+        <details class="faq">
+          <summary>How does Listly calculate my real profit?<span class="pm"></span></summary>
+          <div class="ans"><p>We pull every fee, ad spend, shipping cost, and refund directly from Etsy. You add your COGS — by CSV or per-product — and Listly auto-calculates your true profit down to the listing level.</p></div>
+        </details>
+        <details class="faq">
+          <summary>Is my data private and secure?<span class="pm"></span></summary>
+          <div class="ans"><p>Yes. Listly uses Etsy's official OAuth and encrypts your data end to end. Your financials, COGS, and supplier info are only visible to you — never shared, never used for training.</p></div>
+        </details>
+        <details class="faq">
+          <summary>I already use a research tool. Why switch?<span class="pm"></span></summary>
+          <div class="ans"><p>Those are research-only tools. Listly handles research, listings, orders, and finances in one place — so you stop paying for separate apps that don't talk to each other.</p></div>
+        </details>
+        <details class="faq">
+          <summary>What platforms are coming next?<span class="pm"></span></summary>
+          <div class="ans"><p>TikTok Shop, eBay, and Shopify. One backend, every marketplace. Trial users get early access as each one ships.</p></div>
+        </details>
       </div>
     </div>
   </section>
 
   <!-- ====================== FINAL CTA ====================== -->
-  <section class="section final">
-    <div class="wrap">
-      <div class="final-card reveal">
-        <div class="glow"></div>
-        <span class="scan"><span class="tl"></span><span class="tr"></span><span class="bl"></span><span class="br"></span></span>
-        <p class="eyebrow" style="color:rgba(255,247,238,.8);">Your next listing is one photo away</p>
-        <h2 style="margin-top:18px;">Spend your time making. Leave the listing to Listly.</h2>
-        <p class="lead">Download Listly and turn the photo on your phone into a listing you'll be proud to publish today.</p>
-        <div class="cta-row">
-          <a class="appstore" href="#"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 12.54c-.02-2.07 1.69-3.06 1.77-3.11-.96-1.41-2.46-1.6-2.99-1.62-1.27-.13-2.49.75-3.13.75-.65 0-1.64-.73-2.7-.71-1.39.02-2.67.81-3.38 2.05-1.44 2.5-.37 6.2 1.04 8.23.69.99 1.51 2.11 2.58 2.07 1.04-.04 1.43-.67 2.69-.67 1.25 0 1.6.67 2.69.65 1.11-.02 1.81-1.01 2.49-2.01.78-1.15 1.11-2.27 1.13-2.33-.02-.01-2.17-.83-2.19-3.3zM15.01 6.18c.57-.69.96-1.65.85-2.61-.82.03-1.82.55-2.41 1.24-.53.61-.99 1.59-.87 2.52.92.07 1.86-.47 2.43-1.15z"/></svg><span class="as-txt"><small>Download on the</small><strong>App Store</strong></span></a>
-        </div>
+  <section class="finale" id="start">
+    <div class="finale-inner reveal">
+      <h2>Run your whole Etsy<br>business on <em>Listly.</em></h2>
+      <p>One screen for orders, finances, listings, and research. Free to start — no credit card required.</p>
+      <div class="hero-actions">
+        <a href="#" class="btn btn-primary">Get Started Free <span class="arr">→</span></a>
+        <a href="#capabilities" class="btn btn-dark">Explore features</a>
       </div>
     </div>
   </section>
@@ -93,68 +443,38 @@
   <!-- ====================== FOOTER ====================== -->
   <footer class="footer">
     <div class="wrap">
-      <div class="row">
+      <div class="top">
         <div>
-          <a class="brand" href="#top"><img src="assets/icon.png" alt="Listly" style="border-radius:9px;width:36px;height:36px;"><span class="name">Listly</span></a>
-          <p class="tag">Etsy listings made easy.</p>
+          <a class="brand" href="#top"><span class="mark"></span>Listly</a>
+          <p class="blurb">The fastest way to research, validate, and scale your Etsy business. One screen for every seller tool you need.</p>
         </div>
-        <nav>
-          <div class="col">
-            <h4>Company</h4>
-            <a href="terms.html">Terms of Service</a>
-            <a href="privacy.html">Privacy Policy</a>
-            <a href="mailto:support@trylistly.com">Contact &middot; support@trylistly.com</a>
-          </div>
-        </nav>
+        <div class="col">
+          <h4>Product</h4>
+          <a href="#capabilities">Features</a>
+          <a href="#compare">Why Listly</a>
+          <a href="#start">Get Started</a>
+          <a href="#">Login</a>
+        </div>
+        <div class="col">
+          <h4>Resources</h4>
+          <a href="#faq">FAQ</a>
+          <a href="mailto:support@trylistly.com">Contact</a>
+          <a href="#voices">Community</a>
+        </div>
+        <div class="col">
+          <h4>Company</h4>
+          <a href="terms.html">Terms of Service</a>
+          <a href="privacy.html">Privacy Policy</a>
+        </div>
+      </div>
+      <div class="base">
+        <span class="slogan">Etsy listings made easy.</span>
+        <span>© 2026 Listly · Etsy listings made easy.</span>
       </div>
       <p class="disclaimer">The term &lsquo;Etsy&rsquo; is a trademark of Etsy, Inc. This application uses the Etsy API but is not endorsed or certified by Etsy, Inc.</p>
-      <div class="base">
-        <span>© 2026 Listly · Etsy listings made easy.</span>
-        <a href="https://trylistly.com/" target="_blank" rel="noopener">trylistly.com</a>
-      </div>
     </div>
   </footer>
 
-</main>
-
-<script>
-/* ---------- phone mock: real app screenshots inside the device frame ---------- */
-const SCREENS = {
-  listing: 'assets/screen-listing.png',
-  camera:  'assets/screen-camera.png',
-  detail:  'assets/screen-detail.png',
-  pricing: 'assets/screen-pricing.png',
-  home:    'assets/screen-home.png',
-};
-const SCREEN_ALT = {
-  listing: 'Listly listing screen showing product photo, demand score and AI-written title',
-  camera:  'Listly camera screen, snapping a product photo',
-  detail:  'Listly listing detail with AI-written description, tags and video ideas',
-  pricing: 'Listly pricing screen, a profit calculator with Etsy fees included',
-  home:    'Listly home screen with tools, streak and recent listings',
-};
-document.querySelectorAll('.phone[data-screen]').forEach(p=>{
-  const key = p.dataset.screen;
-  p.innerHTML = `<div class="screen"><img class="shot" src="${SCREENS[key]}" alt="${SCREEN_ALT[key]||''}" loading="lazy"></div>`;
-});
-
-/* ---------- nav scroll state ---------- */
-const nav = document.getElementById('nav');
-const onScroll = ()=>{ nav.dataset.scrolled = (window.scrollY > 40) ? 'true':'false'; };
-onScroll(); window.addEventListener('scroll', onScroll, {passive:true});
-
-/* ---------- reveal on scroll (only when page is actually visible, so a
-   throttled background tab/capture shows content instead of freezing at 0) ---------- */
-if (document.visibilityState === 'visible' && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
-  document.body.classList.add('anim');
-  const io = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
-  }, {threshold:.12, rootMargin:'0px 0px -8% 0px'});
-  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-  // safety net: reveal everything shortly after load even if IO misfires
-  setTimeout(()=>document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in')), 2200);
-}
-</script>
-
+  <script src="app.js"></script>
 </body>
 </html>
